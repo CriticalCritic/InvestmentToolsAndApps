@@ -1,3 +1,10 @@
+# requires pip install yfinance
+# pip install PyPortfolioOpt
+# pip install seaborn
+# pip install scikit-learn
+
+import sys
+
 import yfinance as yf
 from pypfopt import EfficientFrontier, objective_functions
 from pypfopt import black_litterman, risk_models
@@ -54,11 +61,11 @@ def ComputePortfolioWeights(symbols, viewdict, confidences, start_date, end_date
     # Ledoit-Wolf is a form of shrinkage for covariance matrix
     S = risk_models.CovarianceShrinkage(portfolio).ledoit_wolf()    
     delta = black_litterman.market_implied_risk_aversion(market_prices)
-    visualize_correlations(S)
+    #visualize_correlations(S)
 
     # compute market-implied prior returns
     market_prior = black_litterman.market_implied_prior_returns(mcaps, delta, S)
-    visualize_market_implied_prior_returns(market_prior)
+    #visualize_market_implied_prior_returns(market_prior)
 
     # Step 3: Integrate Views
     # Idzorek's method: specify a list of percentage confidences (high = high confidence) 
@@ -72,11 +79,11 @@ def ComputePortfolioWeights(symbols, viewdict, confidences, start_date, end_date
 
     # visualize how posterior estimate of returns compares to the prior and user views:
     rets_df = pd.DataFrame([market_prior, ret_bl, pd.Series(viewdict)], index=['Prior','Posterior','Views']).T
-    visualize_posterior_views(rets_df)
+    #visualize_posterior_views(rets_df)
     
     # compute posterior covariances
     S_bl = bl.bl_cov()
-    visualize_posterior_covariances(S_bl)
+    #visualize_posterior_covariances(S_bl)
 
     # Step 5: Compute Portfolio Allocation Weights
     ef = EfficientFrontier(ret_bl, S_bl)
@@ -84,16 +91,24 @@ def ComputePortfolioWeights(symbols, viewdict, confidences, start_date, end_date
     ef.max_sharpe() # maximize Sharpe Ratio
     
     weights = ef.clean_weights()
-    visualize_stock_final_weights(weights)
+    #visualize_stock_final_weights(weights)
 
     print(ef.portfolio_performance(verbose=True, risk_free_rate=0.009))
 
     plt.show()
     return weights
 
-# User inputs
-tickers = ['AAPL','MSFT','META','AMZN','XOM','UNH','JNJ','V','HD','C']
-expected_returns = {'AAPL':0.10,'MSFT':0.10,'META':0.05,'AMZN':0.12,'XOM':-0.30,'UNH':0.00,'JNJ':0.05,'V':0.11,'HD':0.10,'C':-0.2}
-confidences = [0.6,0.4,0.2,0.5, 0.7,0.8,0.7,0.5,0.1,0.4] # create confidence intervals
+print(sys.argv)
 
-ComputePortfolioWeights(tickers,expected_returns,confidences,'2018-01-01','2023-11-30')
+tickers = sys.argv[1]
+expected = {}
+for i in range(len(sys.argv[1])):
+    expected[sys.argv[1][i]] = sys.argv[2][i]
+confidences = sys.argv[3]
+
+# Test User inputs
+#tickers = ['AAPL','MSFT','META','AMZN','XOM','UNH','JNJ','V','HD','C']
+#expected = {'AAPL':0.10,'MSFT':0.10,'META':0.05,'AMZN':0.12,'XOM':-0.30,'UNH':0.00,'JNJ':0.05,'V':0.11,'HD':0.10,'C':-0.2}
+#confidences = [0.6,0.4,0.2,0.5, 0.7,0.8,0.7,0.5,0.1,0.4] # create confidence intervals
+
+print(ComputePortfolioWeights(tickers,expected,confidences,'2018-01-01','2023-11-30'))

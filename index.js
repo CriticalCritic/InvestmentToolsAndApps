@@ -3,6 +3,7 @@ const homeController = require("./controllers/homeController");
 const layouts = require("express-ejs-layouts");
 const errorController = require("./controllers/errorController");
 
+//create app
 const app = express();
 app.set("view engine", "ejs");
 app.use(layouts);
@@ -15,8 +16,11 @@ app.use(express.json());
 //handling routes 
 app.get("/", homeController.respondHome) //home page 
 app.get("/about", homeController.respondAbout) //about page
-app.get("/algorithm", homeController.respondAlgorithm) //algorithm page
+app.get("/blacklitterman", homeController.respondBlackLitterman) //black litterman algorithm page
 app.get("/contact", homeController.respondContact) //contact page
+
+//handle black litterman form submission
+app.post('/bl-form', homeController.respondBLWeights);
 
 //error handling
 app.use(errorController.pageNotFoundError);
