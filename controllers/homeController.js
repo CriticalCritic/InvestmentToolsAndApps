@@ -18,30 +18,39 @@ exports.respondContact = (req, res) => {
 };
 
 exports.respondBLWeights = (req, res) => {
-  const tickers = (req.body.tickers).toUpperCase().trim().split(",");
-  const expected = (req.body.expected).trim().split(",");
-  const confidences = (req.body.confidences).trim().split(",");
-  let weights = [];
+  const tickers = (req.body.tickers).toUpperCase();
+  const expected = (req.body.expected);
+  const confidences = (req.body.confidences);
+  let dataIn = [];
 
-  let args = ['PyPortfolioOpt.py'];
+  // run python script of black litterman algorithm
+  let args = ['BlackLittermanAlgorithm.py'];
   args.push(tickers, expected, confidences);
 
   const childProcess = spawn('python', args);
 
+  // on output recieved from script
   childProcess.stdout.setEncoding('utf8');
   childProcess.stdout.on('data', (data) => {
-      // only last data recieved saved (final calculations)
-      weights = data;
-      console.log(`Node output: ${data}`);
+    // only last data recieved saved (final calculations)
+    dataIn = data;
+    console.log(`Node output: ${data}`);
   })
 
+  // if error occurs
   childProcess.stderr.setEncoding('utf8');
   childProcess.stderr.on('data', (err) => {
-      console.error(err);
+    console.error(err);
   })
 
+  // when script ends
   childProcess.on('exit', () => {
-      console.log('The python script has exited');
-      res.render("bl-weights", {"weights": weights});
+    console.log('The python script has exited');
+    // format output to display
+    weights = dataIn.split(" ");
+    weights.splice(0, 1);
+    weights.splice(weights.length - 1, 1);
+
+    res.render("bl-weights", {"weights": weights});
   })
 };

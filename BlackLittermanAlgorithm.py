@@ -93,22 +93,30 @@ def ComputePortfolioWeights(symbols, viewdict, confidences, start_date, end_date
     weights = ef.clean_weights()
     #visualize_stock_final_weights(weights)
 
-    print(ef.portfolio_performance(verbose=True, risk_free_rate=0.009))
+    #print(ef.portfolio_performance(verbose=True, risk_free_rate=0.009))
 
     plt.show()
     return weights
 
-print(sys.argv)
-
-tickers = sys.argv[1]
+# Format Inputs
+tickers = ((sys.argv[1]).replace(" ", "")).split(",")
+expectedIn = ((sys.argv[2]).replace(" ", "")).split(",")
 expected = {}
-for i in range(len(sys.argv[1])):
-    expected[sys.argv[1][i]] = sys.argv[2][i]
-confidences = sys.argv[3]
+for i in range(len(tickers)):
+    expected[tickers[i]] = float(expectedIn[i])
+confidences = ((sys.argv[3]).replace(" ", "")).split(",")
+for i in range(len(confidences)):
+    confidences[i] = float(confidences[i])
 
 # Test User inputs
 #tickers = ['AAPL','MSFT','META','AMZN','XOM','UNH','JNJ','V','HD','C']
 #expected = {'AAPL':0.10,'MSFT':0.10,'META':0.05,'AMZN':0.12,'XOM':-0.30,'UNH':0.00,'JNJ':0.05,'V':0.11,'HD':0.10,'C':-0.2}
 #confidences = [0.6,0.4,0.2,0.5, 0.7,0.8,0.7,0.5,0.1,0.4] # create confidence intervals
 
-print(ComputePortfolioWeights(tickers,expected,confidences,'2018-01-01','2023-11-30'))
+weights = ComputePortfolioWeights(tickers,expected,confidences,'2018-01-01','2023-11-30')
+
+# Format output for js handling
+output = " "
+for x in weights:
+    output += (str(weights[x]) + " ")
+print(output)

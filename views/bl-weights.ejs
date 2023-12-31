@@ -1,9 +1,11 @@
 <section>
     <div class="split">
         <div class="column">
-            <p>
-                <%= weights %>
-            </p>
+            <ul>
+                <% for (let w of weights) { %>
+                    <li><%= w %></li>
+                <% } %>
+            </ul>
         </div>
 
         <div class="column">
