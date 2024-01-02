@@ -99,12 +99,12 @@ def ComputePortfolioWeights(symbols, viewdict, confidences, start_date, end_date
     return weights
 
 # Format Inputs
-tickers = ((sys.argv[1]).replace(" ", "")).split(",")
-expectedIn = ((sys.argv[2]).replace(" ", "")).split(",")
+tickers = (sys.argv[1]).split(",")
+expectedIn = (sys.argv[2]).split(",")
 expected = {}
 for i in range(len(tickers)):
     expected[tickers[i]] = float(expectedIn[i])
-confidences = ((sys.argv[3]).replace(" ", "")).split(",")
+confidences = (sys.argv[3]).split(",")
 for i in range(len(confidences)):
     confidences[i] = float(confidences[i])
 

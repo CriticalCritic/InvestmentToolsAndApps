@@ -17,10 +17,10 @@ exports.respondContact = (req, res) => {
   res.render("contact");
 };
 
-exports.respondBLWeights = (req, res) => {
-  const tickers = (req.body.tickers).toUpperCase();
-  const expected = (req.body.expected);
-  const confidences = (req.body.confidences);
+exports.respondBLForm = (req, res) => {
+  const tickers = ((req.body.tickers).replaceAll(" ", "")).toUpperCase();
+  const expected = (req.body.expected).replaceAll(" ", "");
+  const confidences = (req.body.confidences).replaceAll(" ", "");
   let dataIn = [];
 
   // run python script of black litterman algorithm
@@ -51,6 +51,6 @@ exports.respondBLWeights = (req, res) => {
     weights.splice(0, 1);
     weights.splice(weights.length - 1, 1);
 
-    res.render("bl-weights", {"weights": weights});
+    res.render("bl-form", {"tickers": tickers.split(","), "weights": weights});
   })
 };

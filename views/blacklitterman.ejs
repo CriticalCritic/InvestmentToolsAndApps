@@ -1,24 +1,23 @@
 <section>
     <div class="split">
         <div class="column">
-            <h2>Diversify Your Investments</h2>
+            <h2>Optimize Your Stock Investments</h2>
             <h3>Using the Black Litterman Algorithm</h3>
-            <br/>
             <p>
-                MASSIVE DISCCLAIMER <br> <br>
-                
-                Basic Information <br>
-            <br/>
+                This is an implementation of the Black Litterman algorithm through PyPortfolioOpt; focused on ease of user experience
+            </p>
+            <h3> MASSIVE DISCLAIMER <br> 
+                I am not an investment proffessional; Use at your own risk</h3>
         </div>
 
         <div class="column">
             <form action="/bl-form" method="post">
-                <label for="tickers">Enter tickers seperated by a comma:</label>
-                <input type="text" id="tickers" name="tickers" placeholder="AAPL, MSFT, META" value="AAPL, MSFT, META" required> <br> <br>
-                <label for="expected">Enter expected returns for each investment:</label>
-                <input type="text" id="expected" name="expected" placeholder="0.1, 0.1, 0.05" value="0.1, 0.1, 0.05" required> <br> <br>
-                <label for="confidences">Enter confidence percentages for each:</label>
-                <input type="text" id="confidences" name="confidences" placeholder="0.6, 0.4, 0.2" value="0.6, 0.4, 0.2" required> <br> <br>
+                <label for="tickers">Enter tickers seperated by a comma:</label> <br>
+                <input type="text" id="tickers" name="tickers" placeholder="AAPL, MSFT, META" required> <br> <br>
+                <label for="expected">Enter expected returns for each investment:</label> <br>
+                <input type="text" id="expected" name="expected" placeholder="0.1, 0.1, 0.05" required> <br> <br>
+                <label for="confidences">Enter confidence percentages for each:</label> <br>
+                <input type="text" id="confidences" name="confidences" placeholder="0.6, 0.4, 0.2" required> <br> <br>
                 <input type="submit" value="Submit">
             </form>
         </div>

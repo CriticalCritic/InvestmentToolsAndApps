@@ -20,7 +20,7 @@ app.get("/blacklitterman", homeController.respondBlackLitterman) //black litterm
 app.get("/contact", homeController.respondContact) //contact page
 
 //handle black litterman form submission
-app.post('/bl-form', homeController.respondBLWeights);
+app.post('/bl-form', homeController.respondBLForm);
 
 //error handling
 app.use(errorController.pageNotFoundError);

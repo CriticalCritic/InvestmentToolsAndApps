@@ -1,0 +1,27 @@
+<section>
+    <div class="split">
+        <div class="column">
+            <ul>
+                <% if (weights.length > 0) { %>
+                    <% for (let i = 0; i < tickers.length; i++) { %>
+                        <li>
+                            <%= tickers[i] %> 
+                            : 
+                            <%= weights[i] * 100 %>%
+                        </li>
+                    <% } %>
+                <% } else { %>
+                    <h2> The app encountered an error </h2>
+                    <h3> Make sure the inputs match proper format </h3>
+                    <h4> If the problem persists, there are options to reach us under the contact tab </h4>
+                <% } %>
+            </ul>
+        </div>
+
+        <div class="column">
+            <h2> MASSIVE DISCLAIMER <br> 
+                I am not a proffessional; Invest at your own risk</h2>
+            <br/>
+        </div>
+    </div>
+</section>

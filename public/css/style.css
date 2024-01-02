@@ -39,13 +39,12 @@ nav a {
 nav a:hover {
     background-color: whitesmoke;
     color: darkgray;
-    font-weight: bold;
 }
 
 section {
     font-family: sans-serif;
     padding: 30px;
-    width: 75%;
+    width: 90%;
 }
 
 .split {
@@ -55,7 +54,7 @@ section {
 .column {
     flex: 50%;
     outline-style: double;
-    padding: 30px;
+    padding: 40px;
 }
 
 .imgResize {
@@ -63,8 +62,12 @@ section {
     width: 100%;
 }
 
+p {
+    font-size: larger;
+}
+
 li {
-    padding: 20px;
+    padding: 10px;
     font-size: larger;
 }
 
