@@ -14,13 +14,15 @@ app.use(express.urlencoded({extended: false}));
 app.use(express.json());
 
 //handling routes 
-app.get("/", homeController.respondHome) //home page 
-app.get("/about", homeController.respondAbout) //about page
-app.get("/blacklitterman", homeController.respondBlackLitterman) //black litterman algorithm page
-app.get("/contact", homeController.respondContact) //contact page
+app.get("/", homeController.respondHome); //home page 
+app.get("/about", homeController.respondAbout); //about page
+app.get("/blacklitterman", homeController.respondBlackLitterman); //black litterman algorithm page
+app.get("/randomforrestclassifier", homeController.respondRandomForrestClassifier) //random forrest algorithm page
+app.get("/contact", homeController.respondContact); //contact page
 
-//handle black litterman form submission
+//handle form submissions
 app.post('/bl-form', homeController.respondBLForm);
+app.post('/rfc-form', homeController.respondRFCForm);
 
 //error handling
 app.use(errorController.pageNotFoundError);

@@ -1,4 +1,5 @@
-# requires pip install yfinance
+# requires these installs once
+# pip install yfinance
 # pip install PyPortfolioOpt
 # pip install seaborn
 # pip install scikit-learn

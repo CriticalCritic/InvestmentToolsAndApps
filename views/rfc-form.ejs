@@ -2,14 +2,9 @@
     <div class="split">
         <div class="column">
             <ul>
-                <% if (weights.length > 0) { %>
-                    <% for (let i = 0; i < tickers.length; i++) { %>
-                        <li>
-                            <%= tickers[i] %> 
-                            : 
-                            <%= weights[i] * 100 %>%
-                        </li>
-                    <% } %>
+                <% if (data.length > 0) { %>
+                        <h3><%= symbol %></h3>
+                        <h3><%= data %></h3>
                 <% } else { %>
                     <h2> The app encountered an error </h2>
                     <h3> Make sure the inputs match proper format </h3>
