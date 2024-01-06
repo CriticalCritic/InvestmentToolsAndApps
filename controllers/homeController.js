@@ -1,4 +1,4 @@
-//Be able to run python program
+// be able to run python program
 const { spawn } = require('child_process');
 
 exports.respondHome = (req, res) => {
@@ -21,6 +21,7 @@ exports.respondContact = (req, res) => {
   res.render("contact");
 };
 
+// Black Litterman form submission
 exports.respondBLForm = (req, res) => {
   const tickers = ((req.body.tickers).replaceAll(" ", "")).toUpperCase();
   const expected = (req.body.expected).replaceAll(" ", "");
@@ -59,6 +60,7 @@ exports.respondBLForm = (req, res) => {
   })
 };
 
+// Random Forrest Classifier form submission
 exports.respondRFCForm = (req, res) => {
   const symbol = req.body.symbol;
   const start_date = req.body.start_date;
@@ -92,7 +94,7 @@ exports.respondRFCForm = (req, res) => {
   // when script ends
   childProcess.on('exit', () => {
     console.log('The python script has exited');
-    // format display for output
+    // format output to display
     if (dataIn) {
       accuracy = (dataIn.split(" "))[3]
     }

@@ -1,16 +1,20 @@
 <section>
     <div class="split">
         <div class="column">
+            <h2>Black Litterman</h2>
             <ul>
-                <% if (weights.length > 0) { %>
+                <!-- Ensure algorithm gave proper output before rendering -->
+                <% if (weights) { %>
                     <% for (let i = 0; i < tickers.length; i++) { %>
                         <li>
                             <%= tickers[i] %> 
                             : 
-                            <%= weights[i] * 100 %>%
+                            <!-- Set weights to percentages  -->
+                            <%= Math.round(weights[i] * 10000) / 100 %>%
                         </li>
                     <% } %>
                 <% } else { %>
+                    <!-- Algorithm did not run properly with given inputs -->
                     <h2> The app encountered an error </h2>
                     <h3> Make sure the inputs match proper format </h3>
                     <h4> If the problem persists, there are options to reach us under the contact tab </h4>
@@ -19,6 +23,7 @@
         </div>
 
         <div class="column">
+            <h3>Percentages may not always add up to 100 because of rounding</h3> <br>
             <h2> MASSIVE DISCLAIMER <br> 
                 I am not an investment proffessional; use at your own risk</h3>
             <br/>

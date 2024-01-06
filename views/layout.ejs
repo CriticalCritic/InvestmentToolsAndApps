@@ -18,12 +18,19 @@
             </div>
         </header>
         
-        <nav>
-            <a href="/">Home</a>
-            <a href="about">About</a>
-            <a href="blacklitterman">Black-Litterman</a>
-            <a href="randomforestclassifier">Random-Forest-Classifier</a>
-            <a href="contact">Contact</a>
+        <nav id="central-nav">
+            <a class="central-nav-link" href="/">Home</a>
+            <a class="central-nav-link" href="about">About</a>
+            
+            <div class="dropdown">
+                <button class="dropbtn" onclick="toggleDropdown()">Tools</button>
+                <div class="dropdown-content" id="myDropdown">
+                    <a href="blacklitterman">Black Litterman</a>
+                    <a href="randomforestclassifier">Random Forest Classifier</a>
+                </div>
+              </div>
+            
+            <a class="central-nav-link" href="contact">Contact</a>
         </nav>
         
         <section>
@@ -32,11 +39,28 @@
     </body>
     <footer>
         <div class="footer">
-                <p>Daniel Olevsky @2023</p>
+                <p class="general-info">Daniel Olevsky @2023</p>
                 <div>
                     <a href="#" class="fa fa-facebook"></a>
                     <a href="#" class="fa fa-twitter"></a>
                 </div>
             </div>
     </footer>
+
+    <script>
+        // When user clicks on dropdown, toggle visibility of dropdown content 
+        function toggleDropdown() {
+          document.getElementById("myDropdown").classList.toggle("show");
+        }
+        
+        // Close dropdown if user clicks outside of it
+        window.onclick = function(e) {
+          if (!e.target.matches('.dropbtn')) {
+          var myDropdown = document.getElementById("myDropdown");
+            if (myDropdown.classList.contains('show')) {
+              myDropdown.classList.remove('show');
+            }
+          }
+        }
+    </script>
 </html>
