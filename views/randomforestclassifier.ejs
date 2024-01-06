@@ -1,10 +1,11 @@
 <section>
     <div class="split">
         <div class="column">
-            <h2>Optimize Your Stock Investments</h2>
-            <h3>Using the Random Forrest Classifier</h3>
+            <h2>Build Equity Return Predictions</h2>
+            <h3>Using Random Forest Classifier</h3>
             <p>
-                This is an implementation of the Random Forrest Classifier algorithm; focused on ease of user experience
+                This is an implementation of the Random Forest Classifier algorithm; focused on ease of user experience <br>
+                Actual predicitons not outputted to user 
             </p>
             <h3> MASSIVE DISCLAIMER <br> 
                 I am not an investment proffessional; use at your own risk</h3>
@@ -13,7 +14,7 @@
         <div class="column">
             <form action="/rfc-form" method="post">
                 <label for="symbol">Enter yahoo finance symbol (can be stock ticker, country index, or sector) </label> <br>
-                <input type="text" id="symbol" name="symbol" placeholder="HSI" value="HSI" required> <br> <br>
+                <input type="text" id="symbol" name="symbol" placeholder="HSI" required> <br> <br>
 
                 <label for="start_date">Enter start date:</label> <br>
                 <input type="date" id="start_date" name="start_date" required> <br> <br>
@@ -22,16 +23,16 @@
                 <input type="date" id="end_date" name="end_date" required> <br> <br>
 
                 <label for="first_model_obs">Enter first model observations (in days)</label> <br>
-                <input type="number" id="first_model_obs" name="first_model_obs" placeholder="2500" min="1" value="2500" required> <br> <br>
+                <input type="number" id="first_model_obs" name="first_model_obs" placeholder="2500" min="1" required> <br> <br>
 
                 <label for="step">Enter step </label> <br>
-                <input type="number" id="step" name="step" placeholder="250" max="365" min="1" value="250" required> <br> <br>
+                <input type="number" id="step" name="step" placeholder="250" max="365" min="1" required> <br> <br>
 
                 <label for="n_estimators">Enter step </label> <br>
-                <input type="number" id="n_estimators" name="n_estimators" placeholder="200" min="1" value="200" required> <br> <br>
+                <input type="number" id="n_estimators" name="n_estimators" placeholder="200" min="1" required> <br> <br>
 
                 <label for="min_samples_split">Enter Min samples split </label> <br>
-                <input type="number" id="min_samples_split" name="min_samples_split" placeholder="50" min="1" value="50" required> <br> <br>
+                <input type="number" id="min_samples_split" name="min_samples_split" placeholder="50" min="1" required> <br> <br>
 
                 <input type="submit" value="Submit">
                 <label>Each run takes around 15 seconds</label>

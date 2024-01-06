@@ -17,7 +17,7 @@ app.use(express.json());
 app.get("/", homeController.respondHome); //home page 
 app.get("/about", homeController.respondAbout); //about page
 app.get("/blacklitterman", homeController.respondBlackLitterman); //black litterman algorithm page
-app.get("/randomforrestclassifier", homeController.respondRandomForrestClassifier) //random forrest algorithm page
+app.get("/randomforestclassifier", homeController.respondRandomForestClassifier) //random forest algorithm page
 app.get("/contact", homeController.respondContact); //contact page
 
 //handle form submissions

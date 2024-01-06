@@ -13,8 +13,8 @@ exports.respondBlackLitterman = (req, res) => {
   res.render("blacklitterman");
 };
 
-exports.respondRandomForrestClassifier = (req, res) => {
-  res.render("randomforrestclassifier");
+exports.respondRandomForestClassifier = (req, res) => {
+  res.render("randomforestclassifier");
 }
 
 exports.respondContact = (req, res) => {
@@ -60,7 +60,6 @@ exports.respondBLForm = (req, res) => {
 };
 
 exports.respondRFCForm = (req, res) => {
-  console.log(req.body.start_date);
   const symbol = req.body.symbol;
   const start_date = req.body.start_date;
   const end_date = req.body.end_date;
@@ -71,7 +70,7 @@ exports.respondRFCForm = (req, res) => {
   let dataIn = [];
 
   // run python script of black litterman algorithm
-  let args = ['RandomForrestClassifier.py'];
+  let args = ['RandomForestClassifier.py'];
   args.push(symbol, start_date, end_date, first_model_obs, step, n_estimators, min_samples_split);
 
   const childProcess = spawn('python', args);
@@ -93,7 +92,10 @@ exports.respondRFCForm = (req, res) => {
   // when script ends
   childProcess.on('exit', () => {
     console.log('The python script has exited');
-
-    res.render("rfc-form", {"symbol": symbol, "data": dataIn});
+    // format display for output
+    if (dataIn) {
+      accuracy = (dataIn.split(" "))[3]
+    }
+    res.render("rfc-form", {"symbol": symbol, "start_date": start_date, "end_date": end_date, "accuracy": accuracy});
   })
 };

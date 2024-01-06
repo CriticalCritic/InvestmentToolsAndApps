@@ -2,9 +2,12 @@
     <div class="split">
         <div class="column">
             <ul>
-                <% if (data.length > 0) { %>
-                        <h3><%= symbol %></h3>
-                        <h3><%= data %></h3>
+                <% if (accuracy) { %>
+                    <div>
+                        <h2><%= symbol %></h2>
+                        <h3><%= start_date %> to <%= end_date %></h3>
+                        <h3>Accuracy of predictions: <%= accuracy %></h3>
+                    </div>
                 <% } else { %>
                     <h2> The app encountered an error </h2>
                     <h3> Make sure the inputs match proper format </h3>
