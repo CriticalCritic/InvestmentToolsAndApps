@@ -15,15 +15,16 @@
         </div>
 
         <div class="column">
+            <br>
             <form action="/rfc-form" method="post">
                 <label for="symbol">Enter yahoo finance symbol (can be stock ticker, country index, or sector) </label> <br>
                 <input type="text" id="symbol" name="symbol" placeholder="HSI" required> 
                 <br> <br>
                 <label for="start_date">Enter start date:</label> <br>
-                <input type="date" id="start_date" name="start_date" required> 
+                <input type="date" id="start_date" name="start_date" value="2023-12-31" required> 
                 <br> <br>
                 <label for="end_date">Enter end date:</label> <br>
-                <input type="date" id="end_date" name="end_date" required> 
+                <input type="date" id="end_date" name="end_date" value="2003-01-02" required> 
                 <br> <br>
                 <label for="first_model_obs">Enter first model observations (in days)</label> <br>
                 <input type="number" id="first_model_obs" name="first_model_obs" placeholder="2500" min="1" required> 

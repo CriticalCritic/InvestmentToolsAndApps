@@ -99,8 +99,6 @@ step = int(sys.argv[5])
 n_estimators = int(sys.argv[6])
 min_samples_split = int(sys.argv[7])
 
-print(sys.argv)
-
 # always same
 IsBinary = False # predict binary (0 or 1) or probability of positive or negative change
 random_state = 1 # set random state at 1 to ensure the model can be replicated (the same random numbers would be produced if the model runs again)

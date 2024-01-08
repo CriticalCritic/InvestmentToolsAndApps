@@ -29,7 +29,7 @@ exports.respondBLForm = (req, res) => {
   let dataIn = [];
 
   // run python script of black litterman algorithm
-  let args = ['BlackLittermanAlgorithm.py'];
+  let args = ['controllers/BlackLittermanAlgorithm.py'];
   args.push(tickers, expected, confidences);
 
   const childProcess = spawn('python', args);
@@ -72,7 +72,7 @@ exports.respondRFCForm = (req, res) => {
   let dataIn = [];
 
   // run python script of black litterman algorithm
-  let args = ['RandomForestClassifier.py'];
+  let args = ['controllers/RandomForestClassifier.py'];
   args.push(symbol, start_date, end_date, first_model_obs, step, n_estimators, min_samples_split);
 
   const childProcess = spawn('python', args);
@@ -96,7 +96,8 @@ exports.respondRFCForm = (req, res) => {
     console.log('The python script has exited');
     // format output to display
     if (dataIn) {
-      accuracy = (dataIn.split(" "))[3]
+      // split by line then first by word
+      accuracy = ((dataIn.split(/\r?\n/))[1]).split(" ")[3]
     }
     res.render("rfc-form", {"symbol": symbol, "start_date": start_date, "end_date": end_date, "accuracy": accuracy});
   })

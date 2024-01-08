@@ -1,21 +1,19 @@
 <section>
     <div class="split">
         <div class="column">
-            <ul>
-                <!-- Ensure algorithm gave proper output before rendering -->
-                <% if (accuracy) { %>
-                    <div>
-                        <h2><%= symbol %></h2>
-                        <h3><%= start_date %> to <%= end_date %></h3>
-                        <h3>Accuracy of predictions: <%= accuracy %></h3>
-                    </div>
-                <% } else { %>
-                    <!-- Algorithm did not run properly with given inputs -->
-                    <h2> The app encountered an error </h2>
-                    <h3> Make sure the inputs match proper format </h3>
-                    <h4> If the problem persists, there are options to reach us under the contact tab </h4>
-                <% } %>
-            </ul>
+            <h2>Random Forest Classifier</h2>
+            <!-- Ensure algorithm gave proper output before rendering -->
+            <% if (accuracy) { %>
+                <div>
+                    <h3><%= symbol %> from <%= start_date %> to <%= end_date %></h3>
+                    <h3>Accuracy of predictions: <%= accuracy * 100 %>%</h3>
+                </div>
+            <% } else { %>
+                <!-- Algorithm did not run properly with given inputs -->
+                <h2> The app encountered an error </h2>
+                <h3> Make sure the inputs match proper format </h3>
+                <h4> If the problem persists, there are options to reach us under the contact tab </h4>
+            <% } %>
         </div>
 
         <div class="column">
