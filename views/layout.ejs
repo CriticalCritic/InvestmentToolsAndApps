@@ -19,18 +19,52 @@
         </header>
         
         <nav id="central-nav">
-            <a class="central-nav-link" href="/">Home</a>
-            <a class="central-nav-link" href="about">About</a>
+            <% if (active == "home") { %>
+                <a class="central-nav-link" id="active-central-nav-link" href="/">Home</a>
+            <% } else { %>
+                <a class="central-nav-link" href="/">Home</a>
+            <% } %>
             
-            <div class="dropdown">
-                <button class="dropbtn" onclick="toggleDropdown()">Tools</button>
-                <div class="dropdown-content" id="myDropdown">
-                    <a href="blacklitterman">Black Litterman</a>
-                    <a href="randomforestclassifier">Random Forest Classifier</a>
+            <% if (active == "about") { %>
+                <a class="central-nav-link" id="active-central-nav-link" href="/about">About</a>
+            <% } else { %>
+                <a class="central-nav-link" href="about">About</a>
+            <% } %>
+            
+            <% if (active == "bl" || active == "rfc") { %>
+                <div class="dropdown">
+                    <button class="dropbtn" id="active-central-nav-link" onclick="toggleDropdown()">Tools</button>
+                    <div class="dropdown-content" id="myDropdown">
+                        <% if (active == "bl") { %>
+                            <a class="active-dropdown" id="active-central-nav-link" href="/blacklitterman">Black Litterman</a>
+                        <% } else { %>
+                            <a href="blacklitterman">Black Litterman</a>
+                        <% } %>
+    
+                        <% if (active == "rfc") { %>
+                            <a class="active-dropdown" id="active-central-nav-link" href="/randomforestclassifier">Random Forest Classifier</a>
+                        <% } else { %>
+                            <a href="randomforestclassifier">Random Forest Classifier</a>
+                        <% } %>
+                    </div>
                 </div>
-              </div>
+            <% } else { %>
+                <div class="dropdown">
+                    <button class="dropbtn" onclick="toggleDropdown()">Tools</button>
+                    <div class="dropdown-content" id="myDropdown">
+                        <a href="blacklitterman">Black Litterman</a>
+                        <a href="randomforestclassifier">Random Forest Classifier</a>
+                    </div>
+                </div>
+            <% } %>
             
-            <a class="central-nav-link" href="contact">Contact</a>
+            
+            <% if (active == "contact") { %>
+                <a class="central-nav-link" id="active-central-nav-link" href="/contact">Contact</a>
+            <% } else { %>
+                <a class="central-nav-link" href="contact">Contact</a>
+            <% } %>
+            
         </nav>
         
         <section>

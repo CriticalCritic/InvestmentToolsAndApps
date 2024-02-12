@@ -2,23 +2,23 @@
 const { spawn } = require('child_process');
 
 exports.respondHome = (req, res) => {
-  res.render("home");
+  res.render("home", {"active": "home"});
 };
 
 exports.respondAbout = (req, res) => {
-  res.render("about");
+  res.render("about", {"active": "about"});
 };
 
 exports.respondBlackLitterman = (req, res) => {
-  res.render("blacklitterman");
+  res.render("blacklitterman", {"active": "bl"});
 };
 
 exports.respondRandomForestClassifier = (req, res) => {
-  res.render("randomforestclassifier");
+  res.render("randomforestclassifier", {"active": "rfc"});
 }
 
 exports.respondContact = (req, res) => {
-  res.render("contact");
+  res.render("contact", {"active": "contact"});
 };
 
 // Black Litterman form submission
